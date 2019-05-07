@@ -3,6 +3,7 @@ import 'package:whatsapp_clone_flutter/pages/Call.screen.dart';
 import 'package:whatsapp_clone_flutter/pages/Camera.screen.dart';
 import 'package:whatsapp_clone_flutter/pages/Chat.screen.dart';
 import 'package:whatsapp_clone_flutter/pages/Status.screen.dart';
+import 'package:whatsapp_clone_flutter/pages/Group.screen.dart';
 import 'constant/Constant.dart';
 
 class WhatsAppHome extends StatefulWidget {
@@ -21,7 +22,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, initialIndex: 1, length: 4);
+    _tabController = TabController(vsync: this, initialIndex: 1, length: 5);
   }
 
   void choiceAction(String choice) {
@@ -56,6 +57,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSt
           tabs: <Widget>[
             Tab(icon: Icon(Icons.camera_alt)),
             Tab(text: "CHATS"),
+            Tab(text: "GROUPS"),
             Tab(text: "STATUS"),
             Tab(text: "CALLS")
           ],
@@ -66,6 +68,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSt
         children: <Widget>[
           CameraScreen(widget.cameras),
           ChatScreen(),
+          GroupScreen(),
           StatusScreen(),
           CallScreen()
         ],
