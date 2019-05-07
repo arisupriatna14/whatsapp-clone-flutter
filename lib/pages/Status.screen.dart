@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone_flutter/models/Status.model.dart';
 
 class StatusScreen extends StatelessWidget {
   @override
@@ -28,7 +29,44 @@ class StatusScreen extends StatelessWidget {
             ),
             trailing: Icon(Icons.more_horiz, color: Theme.of(context).primaryColor, size: 24.0),
           ),
-          Divider(height: 10.0)
+          Divider(height: 10.0),
+          Expanded(
+            child: Container(
+              child: ListView.builder(
+                itemCount: dataStatus.length,
+                itemBuilder: (context, int index) => Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: CircleAvatar(
+                        foregroundColor: Theme.of(context).primaryColor,
+                        backgroundColor: Colors.grey,
+                        backgroundImage: NetworkImage(dataStatus[index].avatarurl),
+                        radius: 25.0,
+                      ),
+                      title: Row(
+                        children: <Widget>[
+                          Text(
+                            dataStatus[index].name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold
+                            ),
+                          )
+                        ],
+                      ),
+                      subtitle: Container(
+                        child: Text(
+                          dataStatus[index].date,
+                          style: TextStyle(
+                            color: Colors.grey
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
